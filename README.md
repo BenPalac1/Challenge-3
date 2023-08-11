@@ -17,3 +17,5 @@ The code for the challenge can be found in the following file:
 
 
 ## Link to Deployed
+https://benpalac1.github.io/Challenge-3/ 
+
