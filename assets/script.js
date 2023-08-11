@@ -8,7 +8,6 @@ var characterSets = {
   specialChar: "!@#$%&'()*+,^-./:;<=>?[]_`{~}|"
 };
 
-
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
@@ -18,12 +17,12 @@ function writePassword() {
   var length = parseInt(window.prompt("How many characters would you like your password to be? No less than 8. No more than 128. :)"));
 
   while (!valid) {
-      if (length < 8 || length > 128 ) {
-        length = parseInt(window.prompt("Please choose a number between 8 and 128."));
-      }
-      else {
-        valid = true;
-      };
+    if (length < 8 || length > 128 ) {
+      length = parseInt(window.prompt("Please choose a number between 8 and 128."));
+    }
+    else {
+      valid = true;
+    };
   };
   
   var lowercase = confirm("Do you want to include lowercase characters?");
@@ -46,41 +45,42 @@ function writePassword() {
   };
 
   function generatePassword() {
-
     // start with empty string
-     let pword = "";
+    let pword = "";
     // log  user choices - done in the variables
     // generate password to match
-      // correct length
-
       
+    // if lowercase picked = include lowercase
+    if(lowercase) {
+      pword += characterSets.lowercaseChar;
+      console.log(pword);
+    }
 
-      // if lowercase picked = include lowercase
-      if(lowercase) {
-        pword += characterSets.lowercaseChar;
-        console.log(pword);
-      }
-      // if uppercase picked = include uppercase
-      if(uppercase) {
-        pword += characterSets.uppercaseChar;
-        console.log(pword);
-      }
-      // if numeric picked = include numeric
-      if(numeric) {
-        pword += characterSets.numericChar;
-        console.log(pword);
-      }
-      // if special picked = include special
-      if(special) {
-        pword += characterSets.specialChar;
-        console.log(pword);
-      }
-      // random
-      let randomP = "";
-      for (let i = 0; i < length; i++) {
-        randomP += pword[Math.floor(Math.random() * pword.length)];
-      };
-      return(randomP);
+    // if uppercase picked = include uppercase
+    if(uppercase) {
+      pword += characterSets.uppercaseChar;
+      console.log(pword);
+    }
+
+    // if numeric picked = include numeric
+    if(numeric) {
+      pword += characterSets.numericChar;
+      console.log(pword);
+    }
+
+    // if special picked = include special
+    if(special) {
+      pword += characterSets.specialChar;
+      console.log(pword);
+    }
+
+    // correct length
+    // random
+    let randomP = "";
+    for (let i = 0; i < length; i++) {
+      randomP += pword[Math.floor(Math.random() * pword.length)];
+    };
+    return(randomP);
 
   }
 
@@ -90,8 +90,6 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
   passwordText.value = password;
  
-
-
 };
 
 // Add event listener to generate button
